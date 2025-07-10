@@ -1,5 +1,7 @@
+
 import jwt from "jsonwebtoken";
-const SECRET = "sometext";
+const SECRET = "something";
+
 const authenticate = (req, res, next) => {
   try {
     let token = req.headers.authorization;
@@ -8,17 +10,18 @@ const authenticate = (req, res, next) => {
     req.role = user.role;
     next();
   } catch (err) {
-    console.log(err);
-    return res.json({ message: "Invalid Token" });
+    return res.json({ message: "Access Denied" });
   }
 };
+
 const authorize = (role) => {
   return (req, res, next) => {
-    if (role === req.role) {
+    if (req.role === role) {
       next();
     } else {
-      return res.json({ message: "Unauthorized access" });
+      return res.json({ message: "Unauthorized Access" });
     }
   };
 };
+
 export {authenticate,authorize}
