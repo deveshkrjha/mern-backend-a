@@ -20,7 +20,7 @@ const dbpass = encodeURIComponent(process.env.DBPASS);
 
 mongoose
   .connect(
-    `mongodb+srv://debu1jha:deveshkr@cluster0.ejzlj2b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+    `mongodb+srv://debu1jha:deveshkr@cluster0.ejzlj2b.mongodb.net/merncafe?retryWrites=true&w=majority&appName=Cluster0`
   )
   .then(() => {
     app.listen(8080, () => {
